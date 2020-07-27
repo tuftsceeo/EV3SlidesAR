@@ -58,9 +58,9 @@ def set_sensor(content):
 
                                 return rgb_raw
                         else:
-                                print("Color sensor: " + str(c1.value()))
+                                # print("Color sensor: " + str(c1.value()))
                                 
-                                publishToUnity(type, str(c1.value()))
+                                # publishToUnity(type, str(c1.value()))
 
                                 return cl.value()
                 if(type=='Gyro'):
