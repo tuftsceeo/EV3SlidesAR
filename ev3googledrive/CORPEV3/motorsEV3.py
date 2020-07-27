@@ -13,7 +13,7 @@ def publishToUnity(command):
         client.connect(MQTT_Broker,1883,60)
         print("Connected with local")
 
-        payload = "{motors}:{speed}:{duration}:{position}:{action}".format(motors = command['port'], speed = command['speed'], duration = command['time'],position = command['position'], action = command['action'])
+        payload = "{motors}:{speed}:{duration}:{position}:{action}".format(motors = command['port'], speed = command['speed'], duration = command['time']/1000.0 ,position = command['position'], action = command['action'])
 
         # print(payload)
         client.publish("topic/EV3ARProject", payload)
@@ -59,7 +59,7 @@ def set_motor(command):
                         command['stopmode']="brake"
                 if command['command'] == "1":#run_forever
                         command['action'] = 'run_Forever'
-                        command['time'] = 'inf'
+                        command['time'] = 0
                         command['position'] = 'n/a'        
                         publishToUnity(command)
                         length=len(large_motors)
@@ -69,7 +69,7 @@ def set_motor(command):
                 if command['command'] =="2":#run_to_abs_pos use positive ([0-900]) for speed_sp (negatives values to run reverse are ignore). 
                                         #For run reverse, use a negative value for position_sp rather than for speed_sp
                         command['action'] = 'run_to_abs_pos'
-                        command['time'] = '0'
+                        command['position'] = '0'
                         publishToUnity(command)
                         for i in range(len(large_motors)):
                                 large_motors[i].run_to_abs_pos(position_sp=command['position'], speed_sp=power, stop_action=command['stopmode'])

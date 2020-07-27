@@ -57,11 +57,9 @@ def set_sensor(content):
                                 publishToUnity(type, rgb_raw)
 
                                 return rgb_raw
-                        else:
-                                # print("Color sensor: " + str(c1.value()))
-                                
-                                # publishToUnity(type, str(c1.value()))
 
+                        else:
+                        
                                 return cl.value()
                 if(type=='Gyro'):
                         port='in'+str(content['port'])

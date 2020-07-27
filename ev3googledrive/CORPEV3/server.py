@@ -126,6 +126,7 @@ def motors_move():
 def read_sensors():
         content = request.get_json()
         sensor_value=read_sensor(content)
+        print("You are here!")
         return (str(sensor_value))
 
 @app.route('/API/V1/EV3dev/Ports')
@@ -175,6 +176,10 @@ def read_command():
                 return(set_motor(content))
         if(int(content['command'])==10):#read sensors
                 sensor_value=set_sensor(content)
+                # print("Sensor value: ", str(sensor_value))
+
+                colors=('unknown','black','blue','green','yellow','red','white','brown')
+                publishToUnity('Color', colors[sensor_value])
                 return (str(sensor_value))
         if(int(content['command'])==15):#run code
                 return (run_code(content))
