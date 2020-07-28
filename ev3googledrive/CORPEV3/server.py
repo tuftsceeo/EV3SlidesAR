@@ -177,9 +177,12 @@ def read_command():
         if(int(content['command'])==10):#read sensors
                 sensor_value=set_sensor(content)
                 # print("Sensor value: ", str(sensor_value))
-
-                colors=('unknown','black','blue','green','yellow','red','white','brown')
-                publishToUnity('Color', colors[sensor_value])
+                # Hack way to distingish color values from other sensors
+                if (type(sensor_value) is int):
+                        colors={0:'unknown', 1:'black', 2:'blue', 3:'green', 4:'yellow', 5:'red', 6:'white', 7:'brown'}
+                        if (sensor_value in colors):
+                                publishToUnity('Color', colors[sensor_value])
+                
                 return (str(sensor_value))
         if(int(content['command'])==15):#run code
                 return (run_code(content))

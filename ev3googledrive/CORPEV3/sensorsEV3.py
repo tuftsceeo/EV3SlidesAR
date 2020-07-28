@@ -10,7 +10,7 @@ def publishToUnity(sensor_type, sensor_value):
 
         client = mqtt.Client()
         client.connect(MQTT_Broker,1883,60)
-        print("Connected with local")
+        # print("Connected with local")
 
         # temp = [str(sensor_type), str(sensor_value)]
         payload = "{sensor}:{value}".format(sensor = sensor_type, value = sensor_value)
@@ -43,7 +43,7 @@ def set_sensor(content):
                         
                         publishToUnity(type, ts.value())
 
-                        return ts.value()
+                        return str(ts.value())
                 if(type=='Color'):
                         port='in'+str(content['port'])
                         cl = ColorSensor(port)
