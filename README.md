@@ -12,6 +12,12 @@ Google slides template: https://docs.google.com/presentation/d/1F9wScvcMDqt-sQjw
 
 *To edit Google slides code, go to the top menu. Click on Tools, then Script Editor.*
 
+## Install
+Sending and Receiving Messages with MQTT requied installing paho-mqtt on the EV3. More information can be found here with example code: https://www.ev3dev.org/docs/tutorials/sending-and-receiving-messages-with-mqtt/
+
+`$ sudo pip3 install paho-mqtt`
+
+
 ## Requirements to view on Zoom application:
 [UnityCam](https://github.com/mrayy/UnityCam)
 1. Before using, access folder "RunMe First", access the target platform folder (x32,x64) which depends on the application you will use to view the virtual camera in. Right click on "Register.bat" and choose "Run as Administrator" to register UnityCam plugin in Windows. A window will appear to confirm that the plugin was successfully registered.
@@ -27,3 +33,9 @@ Check the included sample scene for a fully working example.
 [Webcamoid](https://webcamoid.github.io/)
 1. Download and install Webcamoid, this serves as a virtual webcam that you can select when using Zoom. By assigning UnityCam to the virtual webcam, users will see Unity's game window.
 
+## Running Application
+To run application, navigate to the CORPEV3 directory:
+`$ cd CORPEV3/`
+
+Run server.py:
+`$ python3 server.py`
