@@ -32,6 +32,7 @@ def read_sensor(sensor):
 
 # Implement Python Switch Case Statement using Class
 def set_sensor(content):
+        # print(content)
         rgb_raw=[]
         default="invalid"
         type=content['typeId']

@@ -5,6 +5,7 @@ from ev3dev.ev3 import *
 from time import sleep
 from motorsEV3 import *
 from sensorsEV3 import *
+from sensorsEV3_continous import *
 from werkzeug.utils import secure_filename
 import subprocess
 from multiprocessing import Process
@@ -126,7 +127,6 @@ def motors_move():
 def read_sensors():
         content = request.get_json()
         sensor_value=read_sensor(content)
-        print("You are here!")
         return (str(sensor_value))
 
 @app.route('/API/V1/EV3dev/Ports')
@@ -217,5 +217,9 @@ def seq_code():
 
 
 if __name__ == "__main__":
+        x = threading.Thread(target=runInLoop)
+        x.start()
         app.run(host='0.0.0.0', debug=True, threaded=True)
+
+
 
