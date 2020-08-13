@@ -25,11 +25,14 @@ def runInLoop():
 	check = True
 	while(check):
 		cl = ColorSensor('in4')
+		cl.mode='COL-COLOR'
+		colors={0:'unknown', 1:'black', 2:'blue', 3:'green', 4:'yellow', 5:'red', 6:'white', 7:'brown'}
 		ts = TouchSensor('in3')
 		gy = GyroSensor('in2')
 		us = UltrasonicSensor('in1')
 
-		cl.mode='COL-COLOR'
-		
+		if (cl.value() in colors):
+			color = colors[cl.value()]
+
 		time.sleep(0.1)
-		publish2Unity(us.value(),gy.value(),ts.value(),cl.value())
+		publish2Unity(us.value(),gy.value(),ts.value(),color)
