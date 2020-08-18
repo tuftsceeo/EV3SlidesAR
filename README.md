@@ -32,6 +32,9 @@ Check the included sample scene for a fully working example.
 
 [Webcamoid](https://webcamoid.github.io/)
 1. Download and install Webcamoid, this serves as a virtual webcam that you can select when using Zoom. By assigning UnityCam to the virtual webcam, users will see Unity's game window.
+2. Within the "Configure Sources" tab at the bottom, select "UnityCam" as the active camera. Then go into Settings>Output and check off the Virtual camera box. Add a device to create the virtural camera that is linked to the UnityCam and give a name like "Unity_Cam_Feed".
+3. Now hit the "Play" button which should now stream Unity's camera whenever you enter game mode. 
+4. In Zoom, you should be able to see a new camera option, "Unity_Cam_Feed".
 
 ## Running Application
 To run application, navigate to the CORPEV3 directory:
